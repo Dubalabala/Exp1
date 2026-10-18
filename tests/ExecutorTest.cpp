@@ -51,4 +51,17 @@ TEST(ExecutorTest, should_return_x_plus_1_given_command_is_M_and_facing_is_E)
     ASSERT_EQ(target, executor->Query());
 }
 
+TEST(ExecutorTest, should_return_x_minus_1_given_command_is_M_and_facing_is_W)
+{
+    // given
+    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'W'}));
+
+    // when
+    executor->Execute("M");
+
+    // then
+    const Pose target({-1, 0, 'W'});
+    ASSERT_EQ(target, executor->Query());
+}
+
 }  // namespace adas
