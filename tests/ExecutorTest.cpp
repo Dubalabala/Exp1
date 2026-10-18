@@ -77,4 +77,18 @@ TEST(ExecutorTest, should_return_y_minus_1_given_command_is_M_and_facing_is_N)
     const Pose target({0, 1, 'N'});
     ASSERT_EQ(target, executor->Query());
 }
+
+// test6:south
+TEST(ExecutorTest, should_return_y_minus_1_given_command_is_M_and_facing_is_S)
+{
+    // given
+    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'S'}));
+
+    // when
+    executor->Execute("M");
+
+    // then
+    const Pose target({0, -1, 'S'});
+    ASSERT_EQ(target, executor->Query());
+}
 }  // namespace adas
